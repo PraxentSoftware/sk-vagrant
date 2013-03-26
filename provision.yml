@@ -1,0 +1,40 @@
+---
+- hosts: web-servers
+  user: vagrant
+  sudo: True
+
+  # Base path for includes and files
+  # MUST BE SET TO ABSOLUTE PATH TO TOP OF PLAYBOOKS DIRECTORY
+  vars:
+    base: provision/Ubuntu_12.04_LTS
+
+  vars_files:
+    - $base/mysql/vars.yml
+    - $base/php/vars.yml
+    - $base/varnish/vars.yml
+
+  tasks:
+    # Required initial update of apt repo
+    - name: update apt repo
+      action: apt update-cache=yes
+
+    # Ansible dependency - for apt-add-repository
+    - name: node | get deps
+      action: apt pkg=python-software-properties state=installed
+
+    - include: $base/apache/setup.yml
+    - include: $base/drush/setup.yml
+    - include: $base/mysql/setup.yml
+    - include: $base/mongodb/setup.yml
+    - include: $base/node/setup.yml
+    - include: $base/php/setup.yml
+    - include: $base/redis/setup.yml
+    - include: $base/tools/setup.yml
+    - include: $base/varnish/setup.yml
+
+  handlers:
+    - include: $base/apache/handler.yml
+    - include: $base/mysql/handler.yml
+    - include: $base/mongodb/handler.yml
+    - include: $base/tools/handler.yml
+    - include: $base/varnish/handler.yml
