@@ -7,11 +7,13 @@
   # MUST BE SET TO ABSOLUTE PATH TO TOP OF PLAYBOOKS DIRECTORY
   vars:
     base: provision/Ubuntu_12.04_LTS
+    env: dev
 
   vars_files:
     - $base/mysql/vars.yml
     - $base/php/vars.yml
     - $base/varnish/vars.yml
+    - provision_overrides/${env}_vars.yml
 
   tasks:
     # Required initial update of apt repo

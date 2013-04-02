@@ -4,8 +4,8 @@
 require 'vagrant-ansible'
 
 Vagrant::Config.run do |config|
-  config.vm.box = "ubuntu1204"
-  config.vm.box_url = "http://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-vagrant-amd64-disk1.box"
+  config.vm.box = "precise64"
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
   config.vm.customize ["modifyvm", :id, "--memory", "512"]
 
@@ -20,7 +20,7 @@ Vagrant::Config.run do |config|
   config.vm.network :hostonly, "192.168.0.10"
 
   # Forward guest port 80 to host port 4567
-  config.vm.forward_port 80, 1080
+  config.vm.forward_port 80, 4567
 
   # NFS shared folders
   config.vm.share_folder "share", "/var/www/", "www", :nfs => true

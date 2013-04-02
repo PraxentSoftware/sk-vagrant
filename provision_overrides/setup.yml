@@ -1,0 +1,6 @@
+---
+- name: apache | override ports configuration
+  template: src='$base/apache/templates/prod-ports.j2' dest='/etc/apache2/ports.conf'
+
+- name: apache | override vhost
+  template: src='$base/apache/templates/prod-vhost.j2' dest='/etc/apache2/sites-available/prod-vhost'

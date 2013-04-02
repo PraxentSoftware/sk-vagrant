@@ -1,0 +1,13 @@
+---
+# Override any variables here.
+#
+# This file is loaded after all module vars files, so you can reset any
+# variable for any module.
+
+
+# Apache
+apache_port: 80
+
+# Varnish
+varnish_port: 8080
+varnish_proxy: 80
