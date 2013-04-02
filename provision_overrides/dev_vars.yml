@@ -7,6 +7,7 @@
 
 # Apache
 apache_port: 80
+apache_server_admin: support@astonishdesign.com
 
 # Varnish
 varnish_port: 8080

@@ -21,6 +21,7 @@ Vagrant::Config.run do |config|
 
   # Forward guest port 80 to host port 4567
   config.vm.forward_port 80, 4567
+  config.vm.forward_port 8080, 4668
 
   # NFS shared folders
   config.vm.share_folder "share", "/var/www/", "www", :nfs => true
