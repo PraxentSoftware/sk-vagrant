@@ -1,5 +1,5 @@
 ---
-- hosts: web-servers
+- hosts: vagrant
   user: vagrant
   sudo: True
   gather_facts: no # Enable for Vagrant boxes to save time

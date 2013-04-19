@@ -1,8 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-require 'vagrant-ansible'
-
 Vagrant::Config.run do |config|
   config.vm.box = "precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
@@ -27,12 +25,8 @@ Vagrant::Config.run do |config|
   config.vm.share_folder "share", "/var/www/", "www", :nfs => true
 
   config.vm.provision :ansible do |ansible|
-    # point Vagrant at the location of your playbook you want to run
+    ansible.inventory = "ansible_hosts"
     ansible.playbook = "provision.yml"
-
-    # the Vagrant VM will be put in this host group change this should
-    # match the host group in your playbook you want to test
-    ansible.hosts = "web-servers"
   end
 
 end
