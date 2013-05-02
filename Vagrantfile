@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
   # VirtualBox specific configurations
   config.vm.provider "virtualbox" do |v|
     v.name = "StarterKit"
-    v.customize ["modifyvm", :id, "--memory", "512"]
+    v.customize ["modifyvm", :id, "--memory", "1024"]
 
     # This is only necessary if your CPU does not support VT-x or you run virtualbox
     # inside virtualbox
@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
 
   # Forward guest port 80 to host port 4567
   config.vm.network :forwarded_port, guest: 80, host: 4567
-  config.vm.network :forwarded_port, guest: 80, host: 4668
+  config.vm.network :forwarded_port, guest: 8080, host: 4668
 
   # NFS shared folders
   config.vm.synced_folder "./www", "/var/www", :nfs => true
